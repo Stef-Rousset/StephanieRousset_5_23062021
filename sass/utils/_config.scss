@@ -1,0 +1,34 @@
+//general settings
+
+body {
+  font-size: 65%; /* environ 10px */
+  margin: 0;
+}
+h1 {
+  font-size: 1.8rem;
+  font-family: $title-font;
+  font-weight: bold;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.3rem;
+}
+h4 {
+  font-size: 1.1rem;
+}
+h2, h3, h4 {
+  font-weight: bold;
+  font-family: $text-font;
+}
+p {
+  font-size: 1.2rem;
+  font-family: $text-font;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
