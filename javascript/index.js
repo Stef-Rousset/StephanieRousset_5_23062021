@@ -1,5 +1,5 @@
 // selectionner l'element où afficher les teddies sur index
-const allTeddies = document.querySelector(".all-teddies");
+const teddiesContainer = document.querySelector(".teddies-container");
 
 // recuperer puis afficher les teddies sur index
 const getAllTeddies = () => {
@@ -7,7 +7,7 @@ const getAllTeddies = () => {
     .then(data => data.json())
     .then(teddiesList => {
       teddiesList.forEach(teddy => {
-        allTeddies.insertAdjacentHTML("beforeend", `
+        teddiesContainer.insertAdjacentHTML("afterbegin", `
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">

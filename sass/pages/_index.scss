@@ -1,1 +1,12 @@
-
+.all-teddies {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  h1 {
+    margin-bottom: 2rem;
+  }
+}
+.teddies-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+}
