@@ -17,9 +17,9 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../index.html">
           <img src="../images/teddy_navbar.png" alt="" width="36" height="24" class="d-inline-block align-text-top">
           Mon Ours Préféré
         </a>
@@ -46,7 +46,24 @@
   </header>
   <section class="container one-teddy">
     <h1>Personnalisez votre Ours</h1>
-    <div class="teddy-container">
+    <div class="teddy-show">
+      <img class="teddy-img" alt="ours">
+      <div class="teddy-content">
+        <div class="teddy-text">
+          <h5 class="card-title teddy-text__title"></h5>
+          <p class="card-text teddy-text__text"></p>
+          <p class="card-text teddy-text__price"></p>
+        </div>
+        <div class="teddy-color">
+          <label for="select-color"> Choisissez une couleur</label>
+          <select name="color" id="select-color" required></select>
+        </div>
+        <div class="teddy-quantity">
+          <label for="select-quantity"> Choisissez une quantité</label>
+          <input type="number" name="teddy-quantity" id="select-quantity" min='1' max="50" required>
+        </div>
+        <button type="button" class="btn btn-secondary">Ajouter au panier</button>
+      </div>
     </div>
   </section>
   <footer>

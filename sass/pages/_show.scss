@@ -1,0 +1,28 @@
+.one-teddy h1 {
+  margin-top: 3rem;
+}
+.teddy-show {
+  width: 100%;
+  margin: 3rem 0;
+  display: flex;
+  justify-content: space-around;
+  img {
+    width: 47%;
+    height: auto;
+  }
+}
+.teddy-content {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.teddy-text__text {
+  text-align: justify;
+}
+.teddy-color, .teddy-quantity {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+}
