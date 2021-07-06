@@ -45,27 +45,28 @@
     </div>
   </header>
   <section class="container">
-    <h1>Mon panier</h1>
+    <h2>Mon panier</h2>
     <div class="basket-container">
-      <div class="basket">
+      <div class="basket-products">
+        <h3>Mes produits</h3>
       </div>
       <div class="client-form">
-        <h2>Informations pour la commande</h2>
-        <form action="" class="form-client">
+        <h3>Informations pour la commande</h3>
+        <form action="">
           <label for="firstName">Nom</label>
           <input type="text" id="firstName" placeholder="Thomas" required>
           <label for="lastName">Prénom</label>
           <input type="text" id="lastName" placeholder="Martin" required>
-          <label for="address">Prénom</label>
+          <label for="address">Adresse</label>
           <input type="text" id="address" placeholder="1 rue de Lille" required>
-          <label for="city">Prénom</label>
+          <label for="city">Ville</label>
           <input type="text" id="city" placeholder="Paris" required>
           <label for="email">Email</label>
           <input type="email" id="email" placeholder="thomas.martin@gmail.com" required>
-          <p>Total : <span class="total-price"></span></p>
-          <input type="submit" value="Valider la commande">
+          <hr>
+          <p>Total : <span class="total-price"></span>€</p>
+          <input type="submit" class="btn btn-secondary" value="Valider la commande">
         </form>
-
       </div>
     </div>
   </section>
