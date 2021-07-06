@@ -1,0 +1,25 @@
+.basket-card {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+.basket-card img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+.basket-card h2 {
+  margin: 0;
+}
+.basket-card p {
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 0.75rem;
+}
+.basket-card .basket-card-infos {
+  padding: 1.5rem;
+}

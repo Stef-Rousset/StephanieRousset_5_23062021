@@ -1,4 +1,3 @@
-
 const getOneTeddy = (id) => {
   // selectionner les elements où afficher les infos du teddy sur show
   const teddyShow = document.querySelector(".teddy-show");
@@ -23,4 +22,17 @@ const getOneTeddy = (id) => {
         })
   }
 }
-getOneTeddy(localStorage.getItem('idElement'));
+window.addEventListener('DOMContentLoaded', getOneTeddy(localStorage.getItem('idElement')));
+
+
+const addToBasketButton = document.querySelector('.add-to-basket');
+const teddyId = localStorage.getItem('idElement');
+addToBasketButton.addEventListener('click', function(){
+  addTeddyToBasket(teddyId);
+});
+
+
+
+
+
+

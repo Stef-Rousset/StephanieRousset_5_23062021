@@ -1,4 +1,3 @@
-
 const getAllTeddies = () => {
   // selectionner l'element où afficher les teddies sur index
   const teddiesContainer = document.querySelector(".teddies-container");
@@ -36,7 +35,7 @@ const getAllTeddies = () => {
       })
   }
 }
-getAllTeddies();
+window.addEventListener('DOMContentLoaded', getAllTeddies);
 
 
 
