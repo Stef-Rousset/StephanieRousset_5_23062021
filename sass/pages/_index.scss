@@ -9,4 +9,24 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 2rem;
+
+}
+.teddy-card {
+  transform: scale(1);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .05);
+  &:hover {
+    opacity: 0.9;
+    transition: transform 500ms ease-in-out;
+    transform: scale(1.01);
+  }
+  a {
+    color: black;
+  }
+  a:hover {
+    color: black;
+  }
+  &__img {
+    background-position: center;
+    background-size: cover;
+  }
 }
