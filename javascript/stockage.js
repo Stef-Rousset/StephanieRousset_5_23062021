@@ -31,8 +31,8 @@ function newBasket(){
 // }
 function addTeddyToBasket(teddy){
   const basket = newBasket();
-    basket.push(teddy);
-    saveBasket(basket);
+  basket.push(teddy);
+  saveBasket(basket);
 }
 // sauvegarder le panier
 function saveBasket(basket){
@@ -40,11 +40,9 @@ function saveBasket(basket){
 }
 
 // enlever un element du panier
-function removeFromBasket(teddy,basket){
-  if(basket[teddy] && teddy.quantity > 1){
-    teddy.quantity -= 1;
-  } else {
-    basket.pop(teddy);
-  }
+function removeFromBasket(index){
+  let basket = JSON.parse(localStorage.getItem('basket')); //recup basket et le transfo en objet js
+  console.log(basket);
+  basket = (basket.slice(0,index)).concat(basket.slice(index + 1))
   saveBasket(basket);
 }
