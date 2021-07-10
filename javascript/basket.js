@@ -41,10 +41,41 @@ window.addEventListener('load', function(event){
             window.location.reload(); // pour que la page soit maj sans l'élément supprimé
         })
     })
+    // valider la donnée
+    const firstInput = document.querySelector('#firstName');
+    const lastInput = document.querySelector('#lastName');
+    const addressInput = document.querySelector('#address');
+    const cityInput = document.querySelector('#city');
+    const errorDiv = document.querySelector('.error');
+    let valid = true;
+    function checkData(input, message){
+        input.addEventListener("blur", function (event) {
+            if (input.validity.valid) {
+              // réinitialisation
+              errorDiv.innerHTML = "";
+              valid ==  true;
+            } else {
+              errorDiv.innerHTML = message;
+            }
+        })
+    }
+      if (checkData(firstInput,"Seuls les lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin") == false ) {
+          valid == false;
+      }
+      if (checkData(lastInput,"Seuls les lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin") == false ){
+          valid == false;
+      }
+      if (checkData(addressInput,"Seuls les chiffres,lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin") == false ){
+          valid == false;
+      }
+      if (checkData(cityInput,"Seules les lettres sont autorisées dans ce champ, sans espace au début ou à la fin") == false ) {
+          valid == false;
+      }
+
     // soumettre le formulaire
     const form = document.querySelector('#order-form');
     form.addEventListener('submit', function(event){
-
+        if (valid == true) {
             fetch("http://localhost:3000/api/teddies/order", {
                 method: "POST",
                 headers: {  'Accept': 'application/json',
@@ -56,7 +87,7 @@ window.addEventListener('load', function(event){
                                                  city: document.getElementById('city').value,
                                                  email: document.getElementById('email').value
                                                 },
-                                      products: productsId
+                                      products:  productsId
                                     })
 
             })
@@ -74,26 +105,10 @@ window.addEventListener('load', function(event){
             sessionStorage.setItem('price', total.reduce((a, b) => a + b,0));
             // effacer le panier après soumission du form
             localStorage.clear();
-
+        }
     })
 })
 
-function checkData(){
- const firstInput = document.queryselector('#firstName');
- const lastInput = document.queryselector('#lasstName');
- const cityInput = document.queryselector('#city');
- if (!firstInput.checkValidity()){
-    firstInput.setCustomValidity('Votre prénom ne doit pas contenir de chiffre');
-    return false;
- } else if (!lastInput.checkValidity()){
-    lastInput.setCustomValidity('Votre nom ne doit pas contenir de chiffre');
-    return false;
- } else if (!cityInput.checkValidity()){
-    cityInput.setCustomValidity('La ville ne doit pas contenir de chiffre');
-    return false;
- } else {
-    return true;
- }
-}
+
 
 

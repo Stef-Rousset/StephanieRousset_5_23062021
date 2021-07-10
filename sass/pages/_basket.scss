@@ -9,9 +9,25 @@ h2 {
   h3 {
     margin-bottom: 2rem;
   }
+  @include small-device {
+    flex-direction: column;
+    h3 {
+      margin: 2rem auto;
+      text-align: center;
+    }
+  }
+  @include medium-device {
+    flex-direction: column;
+  }
 }
 .basket-products {
   width: 45%;
+  @include small-device {
+    width: 100%;
+  }
+  @include medium-device {
+    width: 100%;
+  }
 }
 .basket-card {
   overflow: hidden;
@@ -39,6 +55,10 @@ h2 {
   i:hover {
     color:red;
   }
+  @include medium-device {
+    width: 75%;
+    margin: 1rem auto;
+  }
 }
 .basket-card .basket-card-infos {
   padding: 1.5rem;
@@ -61,4 +81,26 @@ h2 {
   p {
     font-weight: bold;
   }
+  .error {
+  color: red;
+  font-style: italic;
+  font-size: 1.2rem;
+  }
+  @include small-device {
+    width: 100%;
+    form {
+      align-items: center;
+    }
+  }
+  @include medium-device {
+    width: 100%;
+    form {
+      width: 75%;
+      margin: 1rem auto;
+    }
+    input {
+      width: 100%;
+    }
+  }
 }
+

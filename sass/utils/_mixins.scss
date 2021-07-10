@@ -1,0 +1,18 @@
+/* Small devices (less than 767px)*/
+@mixin small-device {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+/* Medium devices (tablets portrait, 768px and up)*/
+@mixin medium-device {
+  @media (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+/*Large devices (tablets landscape, desktops, 992px and up)*/
+@mixin large-device {
+  @media (min-width: 992px) {
+    @content;
+  }
+}

@@ -15,12 +15,22 @@ footer {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @include small-device {
+      width: 100vw;
+      grid-template-columns: 1fr;
+    }
+    @include medium-device {
+      width: 100vw;
+    }
 }
 .footer-column-one, .footer-column-two {
   margin: 1.5rem 0;
   text-align: center;
   display: flex;
   flex-direction: column;
+  @include small-device {
+    margin-left: 2rem;
+  }
 }
 .footer-column-one {
   align-items: flex-start;
@@ -28,6 +38,9 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  @include medium-device {
+    align-items: center;
   }
 }
 .footer-column-two {
@@ -41,4 +54,25 @@ footer {
       margin-left: 1rem;
     }
   }
+  @include small-device {
+    align-items: flex-start;
+    &__icons {
+      justify-content: flex-start;
+      a {
+        margin-right: 1rem;
+        margin-left: 0;
+      }
+    }
+  }
+  @include medium-device {
+    align-items: center;
+    &__icons {
+      justify-content: space-evenly;
+      a {
+        margin-left: 0;
+      }
+    }
+
+  }
+
 }
