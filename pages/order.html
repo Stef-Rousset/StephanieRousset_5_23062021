@@ -32,7 +32,7 @@
               <a class="nav-link" href="../index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="basket.html">Mon Panier</a>
+              <a class="nav-link"  href="basket.html">Mon Panier</a>
             </li>
           </ul>
         </div>
@@ -45,30 +45,13 @@
     </div>
   </header>
   <section class="container">
-    <h2>Mon panier</h2>
-    <div class="basket-container">
-      <div class="basket-products">
-        <h3>Mes produits</h3>
-      </div>
-      <div class="client-form">
-        <h3>Informations pour la commande</h3>
-        <form action="order.html" method="post" id="order-form">
-          <label for="firstName">Nom</label>
-          <input type="text" id="firstName" placeholder="Thomas" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" minlength="2" maxlength="40" required>
-          <label for="lastName">Prénom</label>
-          <input type="text" id="lastName" placeholder="Martin" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" minlength="1" maxlength="40" required>
-          <label for="address">Adresse</label>
-          <input type="text" id="address" placeholder="1 rue de Lille" pattern="^[a-zA-Z1-9][a-zA-Z1-9-\s]+[a-zA-Z1-9]$" minlength="5" maxlength="100" required>
-          <label for="city">Ville</label>
-          <input type="text" id="city" placeholder="Paris" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" minlength="1" maxlength="40" required>
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="thomas.martin@gmail.com" required>
-          <hr>
-          <div class="error"></div>
-          <p>Total : <span class="total-price"></span>€</p>
-          <input type="submit" class="btn btn-secondary" value="Valider la commande">
-        </form>
-      </div>
+    <div class="order-container">
+      <h2>Merci pour votre commande <span class="first-name"></span> <span class="last-name"></span> !</h2>
+      <p>Votre commande n°<span class="order-number"></span> d'un montant total
+        de <span class="order-price"></span> sera expédiée d'ici 24 à 48h. Vous
+        recevrez un mail contenant les informations de suivi à l'adresse <span class="order-email"></span>.
+      </p>
+      <p>À bientôt sur Mon Ours Préféré !</p>
     </div>
   </section>
   <footer>
@@ -90,7 +73,6 @@
       </div>
     </div>
   </footer>
-  <script src="../javascript/stockage.js"></script>
-  <script src="../javascript/basket.js"></script>
+  <script src="../javascript/order.js"></script>
 </body>
 </html>

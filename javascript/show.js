@@ -26,9 +26,11 @@ window.addEventListener('DOMContentLoaded', getOneTeddy(localStorage.getItem('id
 
 
 const addToBasketButton = document.querySelector('.add-to-basket');
+const teddyQuantity = document.querySelector('#select-quantity');
 const teddyId = localStorage.getItem('idElement');
+// au clic, ajouter l'element au panier
 addToBasketButton.addEventListener('click', function(){
-  addTeddyToBasket(teddyId);
+    addTeddyToBasket(teddyId, parseInt(teddyQuantity.value, 10));
 });
 
 

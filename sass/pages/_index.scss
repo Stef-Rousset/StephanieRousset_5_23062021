@@ -9,7 +9,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 2rem;
-
+  @include small-device {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0rem;
+  }
 }
 .teddy-card {
   transform: scale(1);
@@ -30,3 +33,4 @@
     background-size: cover;
   }
 }
+

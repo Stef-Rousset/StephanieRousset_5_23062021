@@ -1,0 +1,14 @@
+.order-container {
+  margin: 4rem auto;
+  p {
+    text-align: justify;
+  }
+  @include small-device {
+    h2 {
+      text-align: center;
+    }
+  }
+}
+.order-number, .order-price, .order-email {
+  font-weight: bold;
+}

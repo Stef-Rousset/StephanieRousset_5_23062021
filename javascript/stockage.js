@@ -14,35 +14,30 @@ function newBasket(){
   if (basket != null){
     return JSON.parse(basket);
   } else {
-    return [];
+    // return [];
+    return {};
   }
 }
 
 // ajouter un element au panier
-// function addTeddyToBasket(teddy, quantity){
-//   const basket = newBasket();
-//   if(basket[teddy] === null){
-//     basket.push(JSON.parse(teddy));
-//     teddy.quantity = quantity;
-//   } else {
-//     teddy.quantity += quantity;
-//   }
-//   saveBasket(basket);
-// }
-function addTeddyToBasket(teddy){
+function addTeddyToBasket(id, quantity){
   const basket = newBasket();
-  basket.push(teddy);
+  if (basket[id] === undefined){
+      basket[id] = quantity;
+  } else {
+      basket[id] += quantity;
+  }
   saveBasket(basket);
 }
+
 // sauvegarder le panier
 function saveBasket(basket){
   localStorage.setItem('basket', JSON.stringify(basket));
 }
 
 // enlever un element du panier
-function removeFromBasket(index){
+function removeFromBasket(id){
   let basket = JSON.parse(localStorage.getItem('basket')); //recup basket et le transfo en objet js
-  console.log(basket);
-  basket = (basket.slice(0,index)).concat(basket.slice(index + 1))
+  delete basket[id];
   saveBasket(basket);
 }
