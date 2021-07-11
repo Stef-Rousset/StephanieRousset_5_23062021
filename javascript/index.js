@@ -35,7 +35,11 @@ const getAllTeddies = () => {
       })
   }
 }
-window.addEventListener('DOMContentLoaded', getAllTeddies);
+window.addEventListener('load', function(){
+    getAllTeddies();
+    numberOfItemsInNavbar();
+});
+
 
 
 

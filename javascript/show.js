@@ -22,8 +22,10 @@ const getOneTeddy = (id) => {
         })
   }
 }
-window.addEventListener('DOMContentLoaded', getOneTeddy(localStorage.getItem('idElement')));
-
+window.addEventListener('load', function(){
+    getOneTeddy(localStorage.getItem('idElement'));
+    numberOfItemsInNavbar();
+});
 
 const addToBasketButton = document.querySelector('.add-to-basket');
 const teddyQuantity = document.querySelector('#select-quantity');

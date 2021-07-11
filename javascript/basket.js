@@ -1,4 +1,4 @@
-// variable pour le prix du panier
+// variables pour le prix du panier
 const total = [];
 const totalPrice = document.querySelector('.total-price');
 // fonction pour montrer le panier
@@ -24,13 +24,14 @@ const showBasket = (basket) => {
         }
     }
 }
-window.addEventListener('DOMContentLoaded', showBasket(JSON.parse(localStorage.getItem('basket'))));
+window.addEventListener('DOMContentLoaded', function(){
+  showBasket(JSON.parse(localStorage.getItem('basket')));
+  numberOfItemsInNavbar();
+});
 
 window.addEventListener('load', function(event){
-    // calcul du prix du panier
-    if (totalPrice) {
-        totalPrice.innerText = total.reduce((a, b) => a + b,0);
-    }
+    // calculer le prix du panier
+    totalPrice.innerText = total.reduce((a, b) => a + b,0);
     // récupérer l'id des produits du panier et enlever un article du panier
     const trashes = document.querySelectorAll('.fa-trash-alt');
     let productsId = [];
@@ -42,10 +43,10 @@ window.addEventListener('load', function(event){
         })
     })
     // valider la donnée
-    const firstInput = document.querySelector('#firstName');
-    const lastInput = document.querySelector('#lastName');
-    const addressInput = document.querySelector('#address');
-    const cityInput = document.querySelector('#city');
+    const firstInput = document.getElementById('firstName');
+    const lastInput = document.getElementById('lastName');
+    const addressInput = document.getElementById('address');
+    const cityInput = document.getElementById('city');
     const errorDiv = document.querySelector('.error');
     let valid = true;
     function checkData(input, message){
@@ -65,7 +66,7 @@ window.addEventListener('load', function(event){
       if (checkData(lastInput,"Seuls les lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin") == false ){
           valid == false;
       }
-      if (checkData(addressInput,"Seuls les chiffres,lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin") == false ){
+      if (checkData(addressInput,"Seuls les chiffres, lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin") == false ){
           valid == false;
       }
       if (checkData(cityInput,"Seules les lettres sont autorisées dans ce champ, sans espace au début ou à la fin") == false ) {
@@ -102,8 +103,9 @@ window.addEventListener('load', function(event){
             .catch(function(error){
               alert(error);
             });
+            // stocker le prix total pour le recup sur la page order
             sessionStorage.setItem('price', total.reduce((a, b) => a + b,0));
-            // effacer le panier après soumission du form
+            // vider le localStorage après soumission du form
             localStorage.clear();
         }
     })

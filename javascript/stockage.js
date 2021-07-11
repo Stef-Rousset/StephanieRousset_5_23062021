@@ -14,7 +14,6 @@ function newBasket(){
   if (basket != null){
     return JSON.parse(basket);
   } else {
-    // return [];
     return {};
   }
 }
@@ -41,3 +40,16 @@ function removeFromBasket(id){
   delete basket[id];
   saveBasket(basket);
 }
+
+//afficher le nb d'items du panier ds la navbar
+function numberOfItemsInNavbar(){
+  let basketItemsNumber = document.querySelector('.basket-items__number');
+  let basket = JSON.parse(localStorage.getItem('basket'));
+  if (!basket){
+    basketItemsNumber.innerHTML = 0;
+  } else if (basket != null){
+      basketItemsNumber.innerHTML = Object.keys(basket).length;
+  }
+
+}
+
