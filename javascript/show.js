@@ -18,19 +18,24 @@ const getOneTeddy = (id) => {
         });
         teddyShowPrice.innerText = `Prix : ${teddy.price}€`;
     })
+    .catch(function(error){
+        alert(error);
+    });
 }
+//récupérer l'id dans les params de l'url
+const params = (new URL(document.location)).searchParams;
+const teddyIdInShow = params.get('id');
+//gérer le clic sur la bouton ajouter
 const handleAddToBasketButton = () => {
     const addToBasketButton = document.querySelector('.add-to-basket');
     const teddyQuantity = document.querySelector('#select-quantity');
-    const teddyId = localStorage.getItem('idElement');
-    // au clic, ajouter l'element au panier
     addToBasketButton.addEventListener('click', function(){
-        addTeddyToBasket(teddyId, parseInt(teddyQuantity.value, 10));
+        addTeddyToBasket(teddyIdInShow, parseInt(teddyQuantity.value, 10));
     });
 }
 
 window.addEventListener('DOMContentLoaded', function(){
-    getOneTeddy(localStorage.getItem('idElement'));
+    getOneTeddy(teddyIdInShow);
     numberOfItemsInNavbar();
     handleAddToBasketButton();
 });

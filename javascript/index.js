@@ -7,8 +7,8 @@ const getAllTeddies = () => {
     .then(teddiesList => {
         teddiesList.forEach(teddy => {
             teddiesContainer.insertAdjacentHTML("afterbegin", `
-            <div class="card mb-3 teddy-card" data-id=${teddy._id} style="max-width: 540px;">
-            <a href="pages/show.html ">
+            <div class="card mb-3 teddy-card" style="max-width: 540px;">
+            <a href="pages/show.html?id=${teddy._id} ">
               <div class="row g-0">
                 <div class="col-md-4 teddy-card__img" style="background-image: url('${teddy.imageUrl}');">
                 </div>
@@ -23,27 +23,16 @@ const getAllTeddies = () => {
               </a>
             </div> `)
         })
-        // handleClickOnTeddyCard();
     })
-
+    .catch(function(error){
+        alert(error);
+    });
 }
 window.addEventListener('DOMContentLoaded', function(){
     getAllTeddies();
     numberOfItemsInNavbar();
 });
-//gérer le clic sur une teddy card
-function handleClickOnTeddyCard() {
-    const teddiesCards = document.querySelectorAll('.teddy-card');
-    teddiesCards.forEach(teddyCard => {
-        teddyCard.addEventListener('click', event => {
-            let teddyId = event.currentTarget.dataset.id;
-            getId(teddyId);
-        })
-    })
-}
-window.addEventListener('load', function(){
-  handleClickOnTeddyCard();
-});
+
 
 
 
