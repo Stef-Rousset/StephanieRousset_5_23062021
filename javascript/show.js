@@ -8,7 +8,7 @@ const getOneTeddy = (id) => {
     const teddyShowColor = document.getElementById('select-color');
     // recuperer puis afficher les infos du teddy sur show
     fetch(`http://localhost:3000/api/teddies/${id}`)
-    .then(data => data.json())
+    .then(response => response.json())
     .then(teddy => {
         teddyShowImg.setAttribute('src', `${teddy.imageUrl}`);
         teddyShowTitle.innerText = `${teddy.name}`;
@@ -25,7 +25,7 @@ const getOneTeddy = (id) => {
 //récupérer l'id dans les params de l'url
 const params = (new URL(document.location)).searchParams;
 const teddyIdInShow = params.get('id');
-//gérer le clic sur la bouton ajouter
+//gérer le clic sur le bouton ajouter
 const handleAddToBasketButton = () => {
     const addToBasketButton = document.querySelector('.add-to-basket');
     const teddyQuantity = document.querySelector('#select-quantity');

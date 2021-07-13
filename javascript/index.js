@@ -3,7 +3,7 @@ const getAllTeddies = () => {
     const teddiesContainer = document.querySelector(".teddies-container");
     // recuperer puis afficher les teddies sur index
     fetch("http://localhost:3000/api/teddies")
-    .then(data => data.json())
+    .then(response => response.json())
     .then(teddiesList => {
         teddiesList.forEach(teddy => {
             teddiesContainer.insertAdjacentHTML("afterbegin", `

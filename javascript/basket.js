@@ -54,63 +54,61 @@ window.addEventListener('load', function(){
             if (input.validity.valid) {
               // réinitialisation
               errorDiv.innerHTML = "";
-              valid ==  true;
+              valid ===  true;
             } else {
               errorDiv.innerHTML = message;
             }
         })
     }
-
     if (checkData(firstInput,"Seuls les lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid == false;
+        valid === false;
     }
     if (checkData(lastInput,"Seuls les lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid == false;
+        valid === false;
     }
     if (checkData(addressInput,"Seuls les chiffres, lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid == false;
+        valid === false;
     }
     if (checkData(cityInput,"Seules les lettres sont autorisées dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid == false;
+        valid === false;
     }
     // soumettre le formulaire
     function handleForm(){
-    const form = document.querySelector('#order-form');
-    form.addEventListener('submit', function(event){
-        if (valid == true) {
-            fetch("http://localhost:3000/api/teddies/order", {
-                method: "POST",
-                headers: {  'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({contact: { firstName: document.getElementById('firstName').value,
-                                                 lastName: document.getElementById('lastName').value,
-                                                 address: document.getElementById('address').value,
-                                                 city: document.getElementById('city').value,
-                                                 email: document.getElementById('email').value,
-                                                },
-                                      products:  productsId,
-                                    })
+        const form = document.querySelector('#order-form');
+        form.addEventListener('submit', function(event){
+            if (valid === true) {
+                fetch("http://localhost:3000/api/teddies/order", {
+                    method: "POST",
+                    headers: {  'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({contact: { firstName: document.getElementById('firstName').value,
+                                                     lastName: document.getElementById('lastName').value,
+                                                     address: document.getElementById('address').value,
+                                                     city: document.getElementById('city').value,
+                                                     email: document.getElementById('email').value,
+                                                    },
+                                          products:  productsId,
+                                        })
 
-            })
-            .then(data => data.json())
-            .then(response => {
-                // mettre les infos dans le sessionStorage pr les recup dans la page order.html
-                sessionStorage.setItem('firstName', response.contact.firstName);
-                sessionStorage.setItem('lastName', response.contact.lastName);
-                sessionStorage.setItem('orderId', response.orderId);
-                sessionStorage.setItem('email', response.contact.email);
-            })
-            .catch(function(error){
-              alert(error);
-            });
-            // stocker le prix total pour le recup sur la page order
-            sessionStorage.setItem('price', total.reduce((a, b) => a + b,0));
-        }
-    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // mettre les infos dans le sessionStorage pr les recup dans la page order.html
+                    sessionStorage.setItem('firstName', data.contact.firstName);
+                    sessionStorage.setItem('lastName', data.contact.lastName);
+                    sessionStorage.setItem('orderId', data.orderId);
+                    sessionStorage.setItem('email', data.contact.email);
+                })
+                .catch(function(error){
+                  alert(error);
+                });
+                // stocker le prix total pour le recup sur la page order
+                sessionStorage.setItem('price', total.reduce((a, b) => a + b,0));
+            }
+        })
     }
     handleForm();
 })
-
 
 
