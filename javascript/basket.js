@@ -1,6 +1,5 @@
-// variables pour le prix du panier
+// variable pour le prix du panier
 const total = [];
-const totalPrice = document.querySelector('.total-price');
 // fonction pour montrer le panier
 const showBasket = (basket) => {
     const basketProducts = document.querySelector('.basket-products');
@@ -17,7 +16,7 @@ const showBasket = (basket) => {
                   <div class="basket-card-infos">
                     <h2>${teddy.name} (x ${quantity})</h2>
                     <p><span class="teddy-price"> Prix unitaire: ${teddy.price}</span>€</p>
-                    <p><i class="far fa-trash-alt" data-id="${teddy._id}"></i></p>
+                    <p><i class="far fa-trash-alt" data-id-basket="${teddy._id}"></i></p>
                   </div>
                 </div> `)
             })
@@ -27,20 +26,15 @@ const showBasket = (basket) => {
 window.addEventListener('DOMContentLoaded', function(){
     showBasket(JSON.parse(localStorage.getItem('basket')));
     numberOfItemsInNavbar();
-});
-
-window.addEventListener('load', function(){
-    // calculer le prix du panier
-    totalPrice.innerText = total.reduce((a, b) => a + b,0);
     // récupérer l'id des produits du panier et enlever un article du panier
-    const trashes = document.querySelectorAll('.fa-trash-alt');
     let productsId = [];
-    trashes.forEach(trash => {
-        productsId.push(trash.dataset.id);
-        trash.addEventListener('click', function(){
-            removeFromBasket(trash.dataset.id);
-            window.location.reload(); // pour que la page soit maj sans l'élément supprimé
-        })
+    document.addEventListener('click', function(event){
+      if (event.target && event.target.dataset.idBasket != null) {
+        console.log(event.target);
+            productsId.push(event.target.dataset.idBasket);
+            removeFromBasket(event.target.dataset.idBasket);
+            window.location.reload();
+      }
     })
     // valider la donnée
     const firstInput = document.getElementById('firstName');
@@ -110,5 +104,8 @@ window.addEventListener('load', function(){
     }
     handleForm();
 })
-
-
+// calculer le prix du panier
+window.addEventListener('load', function(){
+  const totalPrice = document.querySelector('.total-price');
+  totalPrice.innerText = total.reduce((a, b) => a + b,0);
+});
