@@ -36,6 +36,10 @@
             </li>
           </ul>
         </div>
+        <div class="basket-items">
+          <i class="fas fa-shopping-cart"></i>
+          <p class="basket-items__number"></p>
+        </div>
     </nav>
     <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('../images/banner.jpg');">
       <div class="banner__text">
@@ -53,18 +57,18 @@
       <div class="client-form">
         <h3>Informations pour la commande</h3>
         <form action="order.html" method="post" id="order-form">
-          <label for="firstName">Nom</label>
-          <input type="text" id="firstName" placeholder="Thomas" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" minlength="2" maxlength="40" required>
-          <label for="lastName">Prénom</label>
-          <input type="text" id="lastName" placeholder="Martin" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" minlength="1" maxlength="40" required>
+          <label for="firstName">Prénom</label>
+          <input type="text" id="firstName" placeholder="Thomas" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" required>
+          <label for="lastName">Nom</label>
+          <input type="text" id="lastName" placeholder="Martin" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-z]$" required>
           <label for="address">Adresse</label>
-          <input type="text" id="address" placeholder="1 rue de Lille" pattern="^[a-zA-Z1-9][a-zA-Z1-9-\s]+[a-zA-Z1-9]$" minlength="5" maxlength="100" required>
+          <input type="text" id="address" placeholder="1 rue de Lille" pattern="^[a-zA-Z1-9][a-zA-Z1-9-'\s]+[a-zA-Z1-9]$" required>
           <label for="city">Ville</label>
-          <input type="text" id="city" placeholder="Paris" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" minlength="1" maxlength="40" required>
+          <input type="text" id="city" placeholder="Paris" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-z]$" required>
           <label for="email">Email</label>
           <input type="email" id="email" placeholder="thomas.martin@gmail.com" required>
-          <hr>
           <div class="error"></div>
+          <hr>
           <p>Total : <span class="total-price"></span>€</p>
           <input type="submit" class="btn btn-secondary" value="Valider la commande">
         </form>
