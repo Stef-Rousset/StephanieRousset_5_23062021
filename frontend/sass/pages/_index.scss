@@ -31,6 +31,13 @@
   &__img {
     background-position: center;
     background-size: cover;
+    height: 25vh;
+  }
+  @include medium-device {
+    &__img {
+      height: auto;
+    }
   }
 }
+
 

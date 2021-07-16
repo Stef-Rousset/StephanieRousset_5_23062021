@@ -10,3 +10,4 @@ const handleThanksMessage = () => {
     sessionStorage.clear();
 }
 window.addEventListener('DOMContentLoaded', handleThanksMessage);
+

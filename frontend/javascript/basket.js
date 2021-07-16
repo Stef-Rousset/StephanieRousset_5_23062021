@@ -109,3 +109,4 @@ window.addEventListener('load', function(){
   const totalPrice = document.querySelector('.total-price');
   totalPrice.innerText = total.reduce((a, b) => a + b,0);
 });
+

@@ -19,8 +19,8 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../index.html">
-          <img src="../images/teddy_navbar.png" alt="" width="36" height="24" class="d-inline-block align-text-top">
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../images/teddy_navbar.png" alt="" width="36" height="24" class="d-inline-block align-text-top">
           Mon Ours Préféré
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +29,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="../index.html">Home</a>
+              <a class="nav-link" aria-current="page" href="../../index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="basket.html">Mon Panier</a>
+              <a class="nav-link" href="basket.html">Mon Panier</a>
             </li>
           </ul>
         </div>
@@ -41,36 +41,35 @@
           <p class="basket-items__number"></p>
         </div>
     </nav>
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('../images/banner.jpg');">
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('../../images/banner.jpg');">
       <div class="banner__text">
         <h1>Mon ours préféré</h1>
         <p>Personnalisez votre ours en peluche</p>
       </div>
     </div>
   </header>
-  <section class="container">
-    <h2>Mon panier</h2>
-    <div class="basket-container">
-      <div class="basket-products">
-        <h3>Mes produits</h3>
-      </div>
-      <div class="client-form">
-        <h3>Informations pour la commande</h3>
-        <form action="order.html" method="post" id="order-form">
-          <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" placeholder="Thomas" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" required>
-          <label for="lastName">Nom</label>
-          <input type="text" id="lastName" placeholder="Martin" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-z]$" required>
-          <label for="address">Adresse</label>
-          <input type="text" id="address" placeholder="1 rue de Lille" pattern="^[a-zA-Z1-9][a-zA-Z1-9-'\s]+[a-zA-Z1-9]$" required>
-          <label for="city">Ville</label>
-          <input type="text" id="city" placeholder="Paris" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-z]$" required>
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="thomas.martin@gmail.com" required>
-          <div class="error"></div>
-          <hr>
-          <p>Total : <span class="total-price"></span>€</p>
-          <input type="submit" class="btn btn-secondary" value="Valider la commande">
+  <section class="container one-teddy">
+    <h1>Personnalisez votre Ours</h1>
+    <div class="teddy-show">
+      <img class="teddy-img" alt="ours">
+      <div class="teddy-content">
+        <div class="teddy-text">
+          <h5 class="card-title teddy-text__title"></h5>
+          <p class="card-text teddy-text__text"></p>
+          <p class="card-text teddy-text__price"></p>
+        </div>
+        <form action="basket.html" class="form-choice">
+          <div class="form-choice teddy-color">
+            <label for="select-color"> Choisissez une couleur</label>
+            <select name="color" id="select-color" required></select>
+          </div>
+          <div class="form-choice teddy-quantity">
+            <label for="select-quantity"> Choisissez une quantité</label>
+            <input type="number" name="teddy-quantity" id="select-quantity" value="1" min='1' max="50" required>
+          </div>
+          <div class="form-choice">
+            <input type="submit" class="btn btn-secondary add-to-basket" value="Ajouter au panier">
+          </div>
         </form>
       </div>
     </div>
@@ -95,6 +94,8 @@
     </div>
   </footer>
   <script src="../javascript/stockage.js"></script>
-  <script src="../javascript/basket.js"></script>
+  <script src="../javascript/show.js"></script>
+
 </body>
 </html>
+
