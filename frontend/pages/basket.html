@@ -56,7 +56,7 @@
       </div>
       <div class="client-form">
         <h3>Informations pour la commande</h3>
-        <form action="order.html" method="post" id="order-form">
+        <form id="order-form">
           <label for="firstName">Prénom</label>
           <input type="text" id="firstName" placeholder="Thomas" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-z]$" required>
           <label for="lastName">Nom</label>
@@ -70,7 +70,7 @@
           <div class="error"></div>
           <hr>
           <p>Total : <span class="total-price"></span>€</p>
-          <input type="submit" class="btn btn-secondary" value="Valider la commande">
+          <input type="button" class="btn btn-secondary submit-form" onClick="handleForm()" value="Valider la commande">
         </form>
       </div>
     </div>
