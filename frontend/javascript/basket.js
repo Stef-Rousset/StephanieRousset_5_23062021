@@ -30,40 +30,15 @@ const showBasket = (basket) => {
 window.addEventListener('DOMContentLoaded', function(){
     showBasket(JSON.parse(localStorage.getItem('basket')));
     numberOfItemsInNavbar();
-
-    // valider la donnée
-    const firstInput = document.getElementById('firstName');
-    const lastInput = document.getElementById('lastName');
-    const addressInput = document.getElementById('address');
-    const cityInput = document.getElementById('city');
-    const errorDiv = document.querySelector('.error');
-    let valid = true;
-    function checkData(input, message){
-        input.addEventListener("input", function () {
-            if (input.validity.valid) {
-              // réinitialisation
-              errorDiv.innerHTML = "";
-              valid ===  true;
-            } else {
-              errorDiv.innerHTML = message;
-            }
-        })
-    }
-    if (checkData(firstInput,"Seuls les lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid === false;
-    }
-    if (checkData(lastInput,"Seuls les lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid === false;
-    }
-    if (checkData(addressInput,"Seuls les chiffres, lettres et tirets sont autorisés dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid === false;
-    }
-    if (checkData(cityInput,"Seules les lettres sont autorisées dans ce champ, sans espace au début ou à la fin (minimum 3 caractères)") == false ){
-        valid === false;
-    }
-
 })
-
+//calculer le prix du panier
+function priceCalculator(){
+  //recuperer l'element ou inserer le prix
+  const totalPrice = document.querySelector('.total-price');
+  //inserer le prix calculé
+  totalPrice.textContent = total.reduce((a, b) => a + b,0);
+}
+setTimeout(priceCalculator, 100);
 // enlever un article du panier
 document.addEventListener('click', function(event){
   if (event.target && event.target.dataset.idBasket != null) {
@@ -71,16 +46,26 @@ document.addEventListener('click', function(event){
       window.location.reload();
   }
 })
-// calculer le prix du panier
-window.addEventListener('load', priceCalculator);
-function priceCalculator(){
-  //recuperer l'element ou inserer le prix
-  const totalPrice = document.querySelector('.total-price');
-  //inserer le prix calculé
-  totalPrice.textContent = total.reduce((a, b) => a + b,0);
+// afficher un message d'explication si la donnée est invalide
+const errorDiv = document.querySelector('.error');
+function badDataWithoutNumbers(id){
+    if (!document.getElementById(id).validity.valid) {
+        errorDiv.innerHTML = "Seuls les lettres et tirets sont autorisés dans ce champ, sans accent, sans espace au début ou à la fin (minimum 3 caractères)";
+    }
+}
+function badDataWithNumbers(id){
+    if (!document.getElementById(id).validity.valid) {
+        errorDiv.innerHTML = "Seuls les chiffres, lettres et tirets sont autorisés dans ce champ, sans accent, sans espace au début ou à la fin (minimum 3 caractères)";
+    }
+}
+// effacer le message si la donnée est valide
+function goodData(id){
+    if (document.getElementById(id).validity.valid) {
+        errorDiv.innerHTML = "";
+    }
 }
 // soumettre le formulaire
-function handleForm(){
+function submitForm(){
     //recuperer les ids des teddies
     let basket = JSON.parse(localStorage.getItem('basket'));
     let productsId = Object.keys(basket);

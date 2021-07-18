@@ -33,7 +33,6 @@ const handleAddToBasketButton = () => {
         addTeddyToBasket(teddyIdInShow, parseInt(teddyQuantity.value, 10));
     })
 }
-
 window.addEventListener('DOMContentLoaded', function(){
     getOneTeddy(teddyIdInShow);
     numberOfItemsInNavbar();
