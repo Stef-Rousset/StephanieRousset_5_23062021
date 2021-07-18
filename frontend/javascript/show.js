@@ -25,15 +25,14 @@ const getOneTeddy = (id) => {
 //récupérer l'id dans les params de l'url
 const params = (new URL(document.location)).searchParams;
 const teddyIdInShow = params.get('id');
-//gérer le clic sur le bouton ajouter
+//gérer le clic sur le bouton Ajouter
 const handleAddToBasketButton = () => {
-    const addToBasketButton = document.querySelector('.add-to-basket');
-    const teddyQuantity = document.querySelector('#select-quantity');
-    addToBasketButton.addEventListener('click', function(){
+    const addToBasketButton = document.querySelector('.add-to-basket-btn');
+    const teddyQuantity = document.getElementById('select-quantity');
+    addToBasketButton.addEventListener('click', function() {
         addTeddyToBasket(teddyIdInShow, parseInt(teddyQuantity.value, 10));
-    });
+    })
 }
-
 window.addEventListener('DOMContentLoaded', function(){
     getOneTeddy(teddyIdInShow);
     numberOfItemsInNavbar();

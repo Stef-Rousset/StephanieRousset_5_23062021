@@ -32,9 +32,10 @@ function numberOfItemsInNavbar(){
     let basketItemsNumber = document.querySelector('.basket-items__number');
     let basket = JSON.parse(localStorage.getItem('basket'));
     if (!basket){
-        basketItemsNumber.innerHTML = 0;
+        basketItemsNumber.innerText = 0;
     } else if (basket != null){
-        basketItemsNumber.innerHTML = Object.keys(basket).length;
+        basketItemsNumber.innerText = Object.keys(basket).length;
     }
 }
+
 
