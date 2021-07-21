@@ -46,62 +46,82 @@ document.addEventListener('click', function(event){
       window.location.reload();
   }
 })
-// afficher un message d'explication si la donnée est invalide
-const errorDiv = document.querySelector('.error');
-function badDataWithoutNumbers(id){
-    if (!document.getElementById(id).validity.valid) {
-        errorDiv.innerHTML = "Seuls les lettres et tirets sont autorisés dans ce champ, sans accent, sans espace au début ou à la fin (minimum 3 caractères)";
-    }
-}
-function badDataWithNumbers(id){
-    if (!document.getElementById(id).validity.valid) {
-        errorDiv.innerHTML = "Seuls les chiffres, lettres et tirets sont autorisés dans ce champ, sans accent, sans espace au début ou à la fin (minimum 3 caractères)";
-    }
-}
-// effacer le message si la donnée est valide
-function goodData(id){
-    if (document.getElementById(id).validity.valid) {
-        errorDiv.innerHTML = "";
-    }
+function validateData(){
+  const first = document.getElementById('firstName');
+  const last = document.getElementById('lastName');
+  const address = document.getElementById('address');
+  const city = document.getElementById('city');
+  const email = document.getElementById('email');
+  if (!first.validity.valid){
+    // afficher un message d'explication si la donnée est invalide
+    alert("Prénom: 3 caractères minimum, lettres et tirets autorisés, sans accent, sans espace au début ou à la fin");
+    //mettre le focus sur le champ
+    first.focus();
+    return false;
+  }
+  if (!last.validity.valid){
+    alert("Nom: 3 caractères minimum, lettres et tirets autorisés, sans accent, sans espace au début ou à la fin");
+    last.focus();
+    return false;
+  }
+  if (!address.validity.valid){
+    alert("Adresse: 3 caractères minimum, chiffres, lettres et tirets autorisés, sans accent, sans accent, sans espace au début ou à la fin");
+    address.focus();
+    return false;
+  }
+  if (!city.validity.valid){
+    alert("Ville: 3 caractères minimum, lettres et tirets autorisés, sans accent, sans espace au début ou à la fin");
+    city.focus();
+    return false;
+  }
+  if (!email.validity.valid){
+    alert("Email: chiffres, lettres, tirets et underscores autorisés, avec @ et . ");
+    email.focus();
+    return false;
+  }
+  return true;
 }
 // soumettre le formulaire
 function submitForm(){
     //recuperer les ids des teddies
     let basket = JSON.parse(localStorage.getItem('basket'));
     let productsId = Object.keys(basket);
-    //envoi de la requete au serveur
-    fetch("http://localhost:3000/api/teddies/order", {
-        method: "POST",
-        headers: {  'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(
-                  { contact: { firstName: document.getElementById('firstName').value,
-                               lastName: document.getElementById('lastName').value,
-                               address: document.getElementById('address').value,
-                               city: document.getElementById('city').value,
-                               email: document.getElementById('email').value,
-                              },
-                    products:  productsId,
-                  }
-              )
-    })
-    .then(response => response.json())
-    .then(data => {
-        // mettre les infos dans le sessionStorage pr les recuperer dans la page order.html
-        sessionStorage.setItem('firstName', data.contact.firstName);
-        sessionStorage.setItem('lastName', data.contact.lastName);
-        sessionStorage.setItem('orderId', data.orderId);
-        sessionStorage.setItem('email', data.contact.email);
-    })
-    .catch(function(error){
-      alert(error);
-    });
-    // stocker le prix total pour le recuperer sur la page order
-    sessionStorage.setItem('price', total.reduce((a, b) => a + b,0));
-    //rediriger vers la page de confirmation de la commande avec un delai
-    // pour ne pas interrompre le fetch (pour firefox)
-    setTimeout(function(){
-      window.location.href = "order.html";
-    }, 100);
+    //envoi de la requete au serveur si la donnee du form est valide
+    if (validateData()){
+        fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {  'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                      { contact: { firstName: document.getElementById('firstName').value,
+                                   lastName: document.getElementById('lastName').value,
+                                   address: document.getElementById('address').value,
+                                   city: document.getElementById('city').value,
+                                   email: document.getElementById('email').value,
+                                  },
+                        products:  productsId,
+                      }
+                  )
+        })
+        .then(response => response.json())
+        .then(data => {
+            // mettre les infos dans le sessionStorage pr les recuperer dans la page order.html
+            sessionStorage.setItem('firstName', data.contact.firstName);
+            sessionStorage.setItem('lastName', data.contact.lastName);
+            sessionStorage.setItem('orderId', data.orderId);
+            sessionStorage.setItem('email', data.contact.email);
+        })
+        .catch(function(error){
+          alert(error);
+        });
+        // stocker le prix total pour le recuperer sur la page order
+        sessionStorage.setItem('price', total.reduce((a, b) => a + b,0));
+        //rediriger vers la page de confirmation de la commande avec un delai
+        // pour ne pas interrompre le fetch (pour firefox)
+        setTimeout(function(){
+          window.location.href = "order.html";
+        }, 100);
+    }
 }
+
