@@ -19,7 +19,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../../index.html">
+        <a class="navbar-brand" href="../index.html">
           <img src="../../images/teddy_navbar.png" alt="" width="36" height="24" class="d-inline-block align-text-top">
           Mon Ours Préféré
         </a>
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="../../index.html">Home</a>
+              <a class="nav-link" href="../index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="basket.html">Mon Panier</a>
@@ -41,7 +41,7 @@
           <p class="basket-items__number"></p>
         </div>
     </nav>
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('../../images/banner.jpg');">
+    <div class="banner">
       <div class="banner__text">
         <h1>Mon ours préféré</h1>
         <p>Personnalisez votre ours en peluche</p>
@@ -58,16 +58,15 @@
         <h3>Informations pour la commande</h3>
         <form id="order-form">
           <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" placeholder="Thomas" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-zA-Z]$" onInput="badDataWithoutNumbers('firstName') ; goodData('firstName')" required>
+          <input type="text" id="firstName" placeholder="Thomas" pattern="^[a-zA-Z][a-zA-Z-\s]+[a-zA-Z]$"  required>
           <label for="lastName">Nom</label>
-          <input type="text" id="lastName" placeholder="Martin" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-zA-Z]$" onInput="badDataWithoutNumbers('lastName') ; goodData('lastName')" required>
+          <input type="text" id="lastName" placeholder="Martin" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-zA-Z]$"  required>
           <label for="address">Adresse</label>
-          <input type="text" id="address" placeholder="1 rue de Lille" pattern="^[a-zA-Z1-9][a-zA-Z1-9-'\s]+[a-zA-Z]$" onInput="badDataWithNumbers('address') ; goodData('address')" required>
+          <input type="text" id="address" placeholder="1 rue de Lille" pattern="^[a-zA-Z1-9][a-zA-Z1-9-'\s]+[a-zA-Z]$"  required>
           <label for="city">Ville</label>
-          <input type="text" id="city" placeholder="Paris" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-z]$" onInput="badDataWithoutNumbers('city') ; goodData('city')" required>
+          <input type="text" id="city" placeholder="Paris" pattern="^[a-zA-Z][a-zA-Z-'\s]+[a-z]$"  required>
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="thomas.martin@gmail.com" required>
-          <div class="error"></div>
+          <input type="email" id="email" placeholder="thomas.martin@gmail.com" pattern="/\A[\w]+@[\w]+\.{1}[\w]+\z/"required>
           <hr>
           <p>Total : <span class="total-price"></span>€</p>
           <input type="button" class="btn btn-secondary submit-form" onClick="submitForm()" value="Valider la commande">
