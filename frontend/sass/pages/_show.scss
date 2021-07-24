@@ -13,7 +13,7 @@
   justify-content: space-around;
   img {
     width: 47%;
-    height: auto;
+    height: fit-content;
   }
   @include small-device {
     flex-direction: column;
@@ -42,11 +42,6 @@
 .teddy-text__text {
   text-align: justify;
 }
-.teddy-color, .teddy-quantity {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.2rem;
-}
 form {
   display: flex;
   flex-direction: column;
@@ -54,4 +49,13 @@ form {
   justify-content: space-between;
   height: 50%;
 }
+.teddy-color, .teddy-quantity {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+}
+#select-quantity {
+  max-width: 198px;
+}
+
 

@@ -19,7 +19,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../../index.html">
+        <a class="navbar-brand" href="../index.html">
           <img src="../../images/teddy_navbar.png" alt="" width="36" height="24" class="d-inline-block align-text-top">
           Mon Ours Préféré
         </a>
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="../../index.html">Home</a>
+              <a class="nav-link" aria-current="page" href="../index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="basket.html">Mon Panier</a>
@@ -58,18 +58,16 @@
           <p class="card-text teddy-text__text"></p>
           <p class="card-text teddy-text__price"></p>
         </div>
-        <form action="basket.html" class="form-choice">
-          <div class="form-choice teddy-color">
+        <form action="basket.html">
+          <div class="teddy-color">
             <label for="select-color"> Choisissez une couleur</label>
             <select name="color" id="select-color" required></select>
           </div>
-          <div class="form-choice teddy-quantity">
+          <div class="teddy-quantity">
             <label for="select-quantity"> Choisissez une quantité</label>
-            <input type="number" name="teddy-quantity" id="select-quantity" value="1" min='1' max="50" required>
+            <input type="number" name="teddy-quantity" id="select-quantity" value="1" required>
           </div>
-          <div class="form-choice">
-            <input type="submit" class="btn btn-secondary add-to-basket-btn" value="Ajouter au panier">
-          </div>
+          <input type="submit" class="btn btn-secondary add-to-basket-btn" value="Ajouter au panier">
         </form>
       </div>
     </div>
